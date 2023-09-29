@@ -58,3 +58,14 @@ ask.fr = "Avez-vous besoin d'une base de données ?"
 type = "select"
 choices = ["none", "mysql", "postgresql"]
 default = "none"
+
+
+[resources]
+[resources.system_user]
+
+[resources.install_dir]
+
+[resources.permissions]
+main.url = "/"
+
+[resources.apt]
