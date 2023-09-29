@@ -5,3 +5,4 @@ source /usr/share/yunohost/helpers
 
 ynh_script_progression --message="Installing strapi..." --weight=2
 ynh_script_progression --message="$install_dir" --weight=2
+ynh_script_progression --message="Installation of $app completed" --last
