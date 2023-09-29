@@ -1,0 +1,7 @@
+version = "1.0"
+
+[main]
+name = "Strapi configuration"
+
+[main.admin]
+name = "Admin access"
