@@ -17,7 +17,7 @@ cat << 'EOF' > config/server.js
 module.exports = ({ env }) => ({
   host: env('HOST', '0.0.0.0'),
   port: env.int('PORT', 1337),
-  url: "https://cms.dooxe-creative.net",
+  url: "https://cms.dooxe-creative.net/",
   app: {
     keys: env.array('APP_KEYS'),
   },
@@ -29,5 +29,7 @@ EOF
 
 npm run develop & 
 cd $pwd
+
+ynh_add_nginx_config
 
 ynh_script_progression --message="Installation of $app completed" --last

@@ -1,1 +1,3 @@
 #!/bin/bash
+ynh_remove_nodejs
+ynh_remove_nginx_config
