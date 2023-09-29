@@ -13,11 +13,13 @@ ynh_script_progression --message="Starting strapi..." --weight=2
 pwd=`pwd`
 cd "$install_dir/strapi"
 
+url=`ynh_app_setting_get --app=$app --key=install.domain`
+
 cat << 'EOF' > config/server.js
 module.exports = ({ env }) => ({
   host: env('HOST', '0.0.0.0'),
   port: env.int('PORT', 1337),
-  url: "https://cms.dooxe-creative.net/",
+  url: "${url}",
   app: {
     keys: env.array('APP_KEYS'),
   },
@@ -27,9 +29,13 @@ module.exports = ({ env }) => ({
 });
 EOF
 
+ynh_script_progression --message="Adding NGINX config..." --weight=2
+ynh_add_nginx_config
+
+ynh_script_progression --message="Running strapi in background..." --weight=2
 npm run develop & 
 cd $pwd
 
-ynh_add_nginx_config
+
 
 ynh_script_progression --message="Installation of $app completed" --last
