@@ -12,6 +12,21 @@ npx --yes create-strapi-app "$install_dir/strapi" --no-run --quickstart
 ynh_script_progression --message="Starting strapi..." --weight=2
 pwd=`pwd`
 cd "$install_dir/strapi"
+
+cat << 'EOF' > config/server.js
+module.exports = ({ env }) => ({
+  host: env('HOST', '0.0.0.0'),
+  port: env.int('PORT', 1337),
+  url: "https://cms.dooxe-creative.net",
+  app: {
+    keys: env.array('APP_KEYS'),
+  },
+  webhooks: {
+    populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
+  },
+});
+EOF
+
 npm run develop & 
 cd $pwd
 
