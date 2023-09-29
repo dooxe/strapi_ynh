@@ -7,6 +7,12 @@ ynh_script_progression --message="Installing NodeJS" --weight=2
 ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
 
 ynh_script_progression --message="Cloning strapi..." --weight=2
-npx create-strapi-app "$install_dir/strapi" --quickstart
+npx --yes create-strapi-app "$install_dir/strapi" --no-run --quickstart
+
+ynh_script_progression --message="Starting strapi..." --weight=2
+pwd=`pwd`
+cd "$install_dir/strapi"
+npm run develop & 
+cd $pwd
 
 ynh_script_progression --message="Installation of $app completed" --last
