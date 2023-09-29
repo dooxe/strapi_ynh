@@ -5,4 +5,10 @@ source /usr/share/yunohost/helpers
 
 ynh_script_progression --message="Installing strapi..." --weight=2
 
+ynh_install_nodejs
+ynh_use_nodejs
+
+npx create-strapi-app "$install_dir/strapi" --quickstart
+
+
 ynh_script_progression --message="Installation of $app completed" --last

@@ -29,35 +29,35 @@ type = "domain"
 
 [install.path]
 type = "path"
-default = "/site"
+default = "/"
 
-[install.with_sftp]
-ask.en = "Do you need a SFTP access?"
-ask.fr = "Avez-vous besoin d'un accès SFTP ?"
-type = "boolean"
-default = true
+#[install.with_sftp]
+#ask.en = "Do you need a SFTP access?"
+#ask.fr = "Avez-vous besoin d'un accès SFTP ?"
+#type = "boolean"
+#default = true
 
-[install.password]
-type = "password"
-optional = true
+#[install.password]
+#type = "password"
+#optional = true
 
 [install.init_main_permission]
 type = "group"
-default = "visitors"
+default = "admins"
 
-[install.phpversion]
-ask.en = "Choose a PHP version you want to use for your app"
-ask.fr = "Choisissez une version PHP que vous souhaitez utiliser pour votre application"
-type = "select"
-choices = ["none", "7.4", "8.0", "8.1", "8.2"]
-default = "8.0"
+#[install.phpversion]
+#ask.en = "Choose a PHP version you want to use for your app"
+#ask.fr = "Choisissez une version PHP que vous souhaitez utiliser pour votre application"
+#type = "select"
+#choices = ["none", "7.4", "8.0", "8.1", "8.2"]
+#default = "8.0"
 
-[install.database]
-ask.en = "Do you need a database?"
-ask.fr = "Avez-vous besoin d'une base de données ?"
-type = "select"
-choices = ["none", "mysql", "postgresql"]
-default = "none"
+#[install.database]
+#ask.en = "Do you need a database?"
+#ask.fr = "Avez-vous besoin d'une base de données ?"
+#type = "select"
+#choices = ["none", "mysql", "postgresql"]
+#default = "none"
 
 
 [resources]
