@@ -1,0 +1,14 @@
+packaging_format = 2
+
+id = "strapi"
+name = "Strapi"
+description.en = "Strapi.EN"
+description.fr = "Strapi.FR"
+
+version = "0.1"
+
+maintainers = []
+
+[upstream]
+license = "MIT"
+code = "https://github.com/dooxe/strapi_ynh"
