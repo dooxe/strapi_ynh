@@ -3,11 +3,8 @@
 source _common.sh
 source /usr/share/yunohost/helpers
 
-ynh_script_progression --message="Using NodeJS" --weight=2
-ynh_use_nodejs
-
 ynh_script_progression --message="Installing NodeJS" --weight=2
-ynh_install_nodejs
+ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
 
 ynh_script_progression --message="Cloning strapi..." --weight=2
 npx create-strapi-app "$install_dir/strapi" --quickstart
