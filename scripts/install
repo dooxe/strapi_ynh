@@ -12,25 +12,16 @@ ynh_script_progression --message="Starting strapi..." --weight=2
 pwd=`pwd`
 cd "$install_dir/strapi"
 
-url=`ynh_app_setting_get --app=$app --key=install.domain`
+domain=`ynh_app_setting_get --app=$app --key=install.domain`
 
-ls=`ls`
-echo $ls
-
-cat << "EOF" > config/server.js
-module.exports = ({ env }) => ({
-  host: env('HOST', '0.0.0.0'),
-  port: env.int('PORT', 1337),
-  url: "${url}",
-  proxy: true,
-  app: {
-    keys: env.array('APP_KEYS'),
-  },
-  webhooks: {
-    populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
-  },
-});
-EOF
+#  {
+#    name: 'strapi::cors',
+#    config: {
+#      enabled: true,
+#      headers: '*',
+#      origin: ['http://localhost:1337', 'https://dooxe-creative.net']
+#    }
+#  }
 
 ynh_script_progression --message="Adding NGINX config..." --weight=2
 ynh_add_nginx_config
