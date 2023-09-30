@@ -5,23 +5,19 @@ source /usr/share/yunohost/helpers
 ynh_script_progression --message="Installing NodeJS" --weight=2
 ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
 
-ynh_script_progression --message="Cloning strapi..." --weight=2
-npx --yes create-strapi-app "$install_dir/strapi" --no-run --quickstart
-
-ynh_script_progression --message="Starting strapi..." --weight=2
-pwd=`pwd`
-cd "$install_dir/strapi"
-
 #domain=`ynh_app_setting_get --app=$app --key=install.domain`
 
-#  {
-#    name: 'strapi::cors',
-#    config: {
-#      enabled: true,
-#      headers: '*',
-#      origin: ['http://localhost:1337', 'https://dooxe-creative.net']
-#    }
-#  }
+if [ -d "/home/dooxe/strapi" ];
+then 
+    cp -R /home/dooxe/strapi "$install_dir/strapi"
+else 
+    ynh_script_progression --message="Cloning strapi..." --weight=2
+    npx --yes create-strapi-app "$install_dir/strapi" --no-run --quickstart
+
+    ynh_script_progression --message="Starting strapi..." --weight=2
+    pwd=`pwd`
+    cd "$install_dir/strapi"
+fi
 
 ynh_script_progression --message="Adding NGINX config..." --weight=2
 ynh_add_nginx_config
