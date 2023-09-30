@@ -12,7 +12,7 @@ ynh_script_progression --message="Starting strapi..." --weight=2
 pwd=`pwd`
 cd "$install_dir/strapi"
 
-domain=`ynh_app_setting_get --app=$app --key=install.domain`
+#domain=`ynh_app_setting_get --app=$app --key=install.domain`
 
 #  {
 #    name: 'strapi::cors',
