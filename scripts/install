@@ -15,7 +15,10 @@ cd "$install_dir/strapi"
 
 url=`ynh_app_setting_get --app=$app --key=install.domain`
 
-cat << 'EOF' > config/server.js
+toto=`ls`
+echo $ls
+
+cat << "EOF" > config/server.js
 module.exports = ({ env }) => ({
   host: env('HOST', '0.0.0.0'),
   port: env.int('PORT', 1337),
@@ -35,7 +38,5 @@ ynh_add_nginx_config
 ynh_script_progression --message="Running strapi in background..." --weight=2
 npm run develop & 
 cd $pwd
-
-
 
 ynh_script_progression --message="Installation of $app completed" --last
