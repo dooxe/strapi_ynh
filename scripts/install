@@ -1,7 +1,8 @@
 #!/bin/bash
+#--------------------------------------------------------------------------
 source _common.sh
 source /usr/share/yunohost/helpers
-#----------------------------------------------------
+#--------------------------------------------------------------------------
 ynh_script_progression --message="Installing NodeJS" --weight=2
 ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
 
@@ -13,11 +14,10 @@ ynh_add_nginx_config
 if [ -d "/home/dooxe/strapi" ];
 then 
     ynh_script_progression --message="Copying strapi..." --weight=2
-    cp -R /home/dooxe/strapi "$install_dir/strapi"
+    cp -R /home/dooxe/strapi "$install_dir"
 else 
     ynh_script_progression --message="Cloning strapi..." --weight=2
     npx --yes create-strapi-app "$install_dir/strapi" --no-run --quickstart
-
     ynh_script_progression --message="Starting strapi..." --weight=2
 fi
 pwd=`pwd`
