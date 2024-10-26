@@ -28,8 +28,11 @@ then
 fi 
 
 #
+ynh_use_nodejs
+
 ynh_script_progression --message="Installing NodeJS" --weight=2
-ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
+ynh_exec_warn_less 
+ynh_nodejs_install --nodejs_version=$nodejs_version
 ynh_script_progression --message="Adding NGINX config..." --weight=2
 ynh_add_nginx_config
 #domain=`ynh_app_setting_get --app=$app --key=install.domain`
