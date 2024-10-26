@@ -1,7 +1,7 @@
 packaging_format = 2
 
 id = "strapi"
-name = "Strapi"
+name = "Strapi.ynh"
 description.en = "Strapi.EN"
 description.fr = "Strapi.FR"
 
