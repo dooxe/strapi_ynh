@@ -2,5 +2,9 @@
 source _common.sh
 source /usr/share/yunohost/helpers
 #----------------------------------------------------
+pm2 stop strapi 
+npm r pm2 
+#
 ynh_remove_nodejs
 ynh_remove_nginx_config
+#
